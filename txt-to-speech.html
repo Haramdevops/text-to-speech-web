@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Text to Speech</title>
+  <style> 
+    /* === Center everything using Flexbox === */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f2f2f2;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    /* === Gradient text heading === */
+    h1 {
+      font-size: 40px;
+      background: linear-gradient(to right, #ff00cc, #3333ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadein 1.5s ease-in-out;
+      margin-bottom: 20px;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+
+    /* === Gradient border input === */
+    .input {
+      border: 4px solid transparent;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(to right, #ff00cc, #3333ff) border-box;
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      transition: transform 0.3s ease;
+      width: 300px;
+    }
+
+    .input:hover {
+      transform: scale(1.05);
+    }
+
+    /* === Button === */
+    button {
+      padding: 10px 16px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Text To Speech Effect</h1>
+    <input class="input" placeholder="Type Something ..." id="text">
+    <button onclick="speakText()">🔊</button>
+  </div>
+
+  <script>
+    function speakText() {
+      const text = document.getElementById("text").value;
+      const utterance = new SpeechSynthesisUtterance(text);
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+
+</body>
+</html>
